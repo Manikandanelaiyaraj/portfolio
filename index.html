@@ -510,7 +510,9 @@ footer{
         <span class="log-title">Daily Log</span>
         <span class="log-count" id="log-count">0 entries</span>
       </div>
-      <div class="log-list" id="log-list"></div>
+      <div class="log-list" id="log-list">
+        
+      </div>
     </div>
 
     <div>
@@ -690,12 +692,12 @@ footer{
 <script>
 // ─── DATES ───────────────────────────────────────────────────────
 const START = new Date();
-START.setDate(START.getDate() + 1); // starts tomorrow
+//START.setDate(START.getDate() + 1); // starts tomorrow
 START.setHours(0,0,0,0);
 
 const today = new Date(); today.setHours(0,0,0,0);
 const msDay = 86400000;
-const daysDone = Math.max(0, Math.floor((today - START) / msDay) + 1);
+const daysDone = Math.max(1, Math.floor((today - START) / msDay) + 1);
 const pct = Math.min(100, Math.round((daysDone / 60) * 100));
 const remaining = Math.max(0, 60 - daysDone);
 
@@ -735,6 +737,12 @@ phaseBadge('ph3-status',46,60);
 // Add your daily learnings here! Format:
 // { day: 1, topic: "Topic name", note: "What you learned", tags: ["tag1","tag2"] }
 const DAILY_LOG = [
+  {
+    day: 1,
+    topic: "JavaScript Fundamentals",
+    note: "Learned variables, scope, hoisting, type coercion, and functions.",
+    tags: ["javascript","basics","functions","learning"]
+  },
   // Example entry (uncomment and edit when your challenge starts):
   // { day: 1, topic: "JS Variables & Data Types", note: "let vs const vs var, primitive types, type coercion", tags: ["variables","types","coercion"] },
   // { day: 2, topic: "Functions & Arrow Functions", note: "function declarations, expressions, arrow syntax, this keyword", tags: ["functions","arrow","scope"] },
