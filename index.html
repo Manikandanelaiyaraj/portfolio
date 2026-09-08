@@ -521,7 +521,7 @@ footer{
         <div class="countdown-label" id="cd-label">DAYS COMPLETE</div>
         <div class="progress-wrap">
           <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
-          <div class="progress-labels"><span>Day 1</span><span id="prog-pct">0%</span><span>Day 60</span></div>
+          <div class="progress-labels"><span id="prog-start">Day 1</span><span id="prog-pct">0%</span><span>Day 60</span></div>
         </div>
         <div class="phase-pills">
           <div class="phase-pill">
@@ -697,7 +697,7 @@ START.setHours(0,0,0,0);
 const today = new Date(); today.setHours(0,0,0,0);
 const msDay = 86400000;
 const daysDone = Math.max(1, Math.floor((today - START) / msDay) + 1);
-const pct = Math.min(100, Math.round((daysDone / 60) * 100));
+const pct = Math.min(100, ((daysDone / 60) * 100).toFixed(1));
 const remaining = Math.max(0, 60 - daysDone);
                    
 // hero
@@ -709,10 +709,11 @@ document.getElementById('start-label').textContent = daysDone === 0
   : START.toLocaleDateString('en-IN',{day:'numeric',month:'long'});
 
 // countdown
-document.getElementById('cd-day').textContent = daysDone;
-document.getElementById('cd-label').textContent = daysDone === 0 ? 'STARTS TOMORROW' : 'DAYS COMPLETE';
+document.getElementById('cd-day').textContent = `${daysDone}`;
+document.getElementById('cd-label').textContent = `Day ${daysDone} of 60`;
 document.getElementById('prog-fill').style.width = pct + '%';
-document.getElementById('prog-pct').textContent = pct + '%';
+document.getElementById('prog-pct').textContent = pct.toFixed(1) + '%';
+document.getElementById('prog-start').textContent = `Day ${daysDone}`;
 
 // phase badges
 function phaseBadge(id, start, end) {
