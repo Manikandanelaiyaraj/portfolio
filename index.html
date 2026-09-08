@@ -700,7 +700,7 @@ const msDay = 86400000;
 const daysDone = Math.max(1, Math.floor((today - START) / msDay) + 1);
 const pct = Math.min(100, Math.round((daysDone / 60) * 100));
 const remaining = Math.max(0, 60 - daysDone);
-
+                   
 // hero
 document.getElementById('hero-day').textContent = daysDone || 1;
 document.getElementById('soon-day').textContent = daysDone || 1;
@@ -743,6 +743,12 @@ const DAILY_LOG = [
     note: "Learned variables, scope, hoisting, type coercion, and functions.",
     tags: ["javascript","basics","functions","learning"]
   },
+  {
+  day: 2,
+  topic: "Student Management System",
+  note: "Used map, filter, find, and some to manage student data and grades.",
+  tags: ["javascript","arrays","logic","functions"]
+  }
   // Example entry (uncomment and edit when your challenge starts):
   // { day: 1, topic: "JS Variables & Data Types", note: "let vs const vs var, primitive types, type coercion", tags: ["variables","types","coercion"] },
   // { day: 2, topic: "Functions & Arrow Functions", note: "function declarations, expressions, arrow syntax, this keyword", tags: ["functions","arrow","scope"] },
